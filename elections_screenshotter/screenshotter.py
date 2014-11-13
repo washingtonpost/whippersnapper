@@ -3,6 +3,8 @@ import logging
 import subprocess
 import time
 
+import pprint
+
 import util
 
 class Screenshotter(object):
@@ -15,8 +17,9 @@ class Screenshotter(object):
         self.screenshot_filenames = []
 
     def get_target_config(self, image):
-        print self.config
-        print image
+        pp = pprint.PrettyPrinter(indent=4)
+        pp.pprint(self.config)
+        pp.pprint(image)
 
     def take_screenshots(self):
         """
