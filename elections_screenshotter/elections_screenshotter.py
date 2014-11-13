@@ -36,6 +36,8 @@ class ElectionsScreenshotter(object):
             images = self.screenshotter.take_screenshots()
             try:
                 filepaths = self.uploader.upload_screenshots(images)
+                if (self.config.get('delete_local_images', False)):
+                    [os.remove(path.get('local_filepath')) for path in images]
             except AttributeError:
                 pass
             time.sleep(self.config.get('time_between_screenshots', 60))

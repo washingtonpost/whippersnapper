@@ -88,6 +88,11 @@ for taking screenshots.
   Optional. Defaults to `/var/log/unnamed-screenshot-tool-log.txt`. Path
   to a file to store logging information in.
 
+- **delete_local_images**
+
+  Optional. Default: false. Whether to delete the local images after
+  uploading them to Amazon S3.
+
 - **time_between_screenshots** - Number
 
   Optional. Default: `60`. Seconds to wait between taking screenshots
