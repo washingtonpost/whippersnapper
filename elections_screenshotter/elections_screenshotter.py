@@ -21,9 +21,9 @@ class ElectionsScreenshotter(object):
             self.usage()
             sys.exit(1)
 
-        self.init_logging()
         config_filepath = sys.argv[1]
         self.config = self.load_config(config_filepath)
+        self.init_logging()
         self.screenshotter = screenshotter.Screenshotter(self.config)
         self.uploader = uploader.Uploader(self.config)
 
