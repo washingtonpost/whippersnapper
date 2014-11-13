@@ -14,6 +14,10 @@ class Screenshotter(object):
         self.config = config
         self.screenshot_filenames = []
 
+    def get_target_config(self, image):
+        print self.config
+        print image
+
     def take_screenshots(self):
         """
         Runs through the process of taking all screenshots.
@@ -21,6 +25,7 @@ class Screenshotter(object):
         self.current_datetime_string = util.get_current_datetime_string()
         images = []
         for image in self.config.get('images'):
+            self.get_target_config(image)
             self.add_filepaths(image)
             try:
                 self.depict(
