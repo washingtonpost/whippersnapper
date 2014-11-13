@@ -3,9 +3,7 @@ import logging
 import subprocess
 import time
 
-import pprint
-
-import util
+import target
 
 class Screenshotter(object):
     """
@@ -16,17 +14,6 @@ class Screenshotter(object):
         self.config = config
         self.screenshot_filenames = []
 
-    def get_target_config(self, image):
-        pp = pprint.PrettyPrinter(indent=4)
-
-        options_whitelist = ['page_load_delay', 'wait_for_js_signal', 'local_image_directory', 'aws_subpath', 'override_css_file', 'wait_for_js_signal', 'failure_timeout']
-
-        for option in options_whitelist:
-            if self.config[option] and not image[option]:
-                image[option] = self.config[option]
-
-        pp.pprint(image)
-
     def take_screenshots(self):
         """
         Runs through the process of taking all screenshots.
@@ -34,38 +21,25 @@ class Screenshotter(object):
         self.current_datetime_string = util.get_current_datetime_string()
         images = []
         for image in self.config.get('images'):
-            self.get_target_config(image)
-            self.add_filepaths(image)
+            target = target.Target(self.config, image)
             try:
                 self.depict(
-                    image.get('url'),
-                    image.get('selector', 'body'),
-                    image.get('local_filepath'),
+                    target.get('url'),
+                    target.get('selector', 'body'),
+                    target.get('local_filepath'),
                     # Depict's delay argument is defined in milliseconds
-                    str(int(self.config.get('page_load_delay', 2)) * 1000)
+                    str(int(target.get('page_load_delay', 2)) * 1000)
                 )
                 images.append({
-                    'slug': image.get('slug'),
-                    'filepath': image.get('filepath'),
-                    'local_filepath': image.get('local_filepath'),
-                    'aws_filepath': image.get('aws_filepath'),
-                    'aws_latest_filepath': image.get('aws_latest_filepath'),
+                    'slug': target.get('slug'),
+                    'filepath': target.get('filepath'),
+                    'local_filepath': target.get('local_filepath'),
+                    'aws_filepath': target.get('aws_filepath'),
+                    'aws_latest_filepath': target.get('aws_latest_filepath'),
                 })
             except RuntimeError as e:
                 logging.error(e)
         return images
-
-    def add_filepaths(self, image):
-        image['filepath'] = util.generate_image_filepath(
-                self.current_datetime_string, image.get('slug'))
-        image['local_filepath'] = util.generate_image_local_filepath(
-                self.config.get('local_image_directory'),
-                self.current_datetime_string, image.get('slug'))
-        image['aws_filepath'] = util.generate_image_aws_filepath(
-                self.config.get('aws_subpath'),
-                self.current_datetime_string, image.get('slug'))
-        image['aws_latest_filepath'] = util.generate_image_aws_latest_filepath(
-                self.config.get('aws_subpath'), image.get('slug'))
 
     def depict(self, url, selector, destination, page_load_delay):
         """

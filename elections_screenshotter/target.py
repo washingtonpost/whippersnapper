@@ -5,6 +5,9 @@ class Target(object):
         self.combine_config_options(global_config, target_config)
 
     def check_config_options(self):
+        """
+        Checking for the required target options.
+        """
         required_options = ['slug', 'url']
 
         for option in required_options:
