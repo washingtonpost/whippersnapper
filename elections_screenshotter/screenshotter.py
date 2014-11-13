@@ -18,7 +18,6 @@ class Screenshotter(object):
         """
         Runs through the process of taking all screenshots.
         """
-        self.current_datetime_string = util.get_current_datetime_string()
         images = []
         for image in self.config.get('images'):
             target = target.Target(self.config, image)
