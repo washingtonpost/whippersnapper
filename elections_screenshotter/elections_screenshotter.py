@@ -89,8 +89,12 @@ def launch_new_instance():
     This is the entry function of the command-line tool
     `elections_screenshotter`.
     """
-    s = ElectionsScreenshotter()
-    s.main()
+    try:
+        s = ElectionsScreenshotter()
+        s.main()
+    except KeyboardInterrupt:
+        # Print a blank line
+        print
 
 if __name__ == '__main__':
     launch_new_instance()
