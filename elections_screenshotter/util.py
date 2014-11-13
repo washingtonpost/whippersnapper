@@ -19,19 +19,19 @@ def generate_image_local_filepath(local_image_directory,
     return '%s/%s' % (local_image_directory,
             generate_image_filepath(current_datetime_string, slug))
 
-def generate_image_aws_filepath(aws_root, current_datetime_string, slug):
+def generate_image_aws_filepath(aws_subpath, current_datetime_string, slug):
     """
     Generates an aws filepath for the image, using
     `generate_image_filepath()`
     """
-    return '%s/%s' % (aws_root,
+    return '%s/%s' % (aws_subpath,
             generate_image_filepath(current_datetime_string, slug))
 
-def generate_image_aws_latest_filepath(aws_root, slug):
+def generate_image_aws_latest_filepath(aws_subpath, slug):
     """
     Generates an aws "latest" filepath for the image.
     """
-    return '%s/%s/latest-%s.png' % (aws_root, slug, slug)
+    return '%s/%s/latest-%s.png' % (aws_subpath, slug, slug)
 
 def generate_public_url(aws_bucket, aws_filepath):
         """

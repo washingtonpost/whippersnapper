@@ -47,10 +47,10 @@ class Screenshotter(object):
                 self.config.get('local_image_directory'),
                 self.current_datetime_string, image.get('slug'))
         image['aws_filepath'] = util.generate_image_aws_filepath(
-                self.config.get('aws_root'),
+                self.config.get('aws_subpath'),
                 self.current_datetime_string, image.get('slug'))
         image['aws_latest_filepath'] = util.generate_image_aws_latest_filepath(
-                self.config.get('aws_root'), image.get('slug'))
+                self.config.get('aws_subpath'), image.get('slug'))
 
     def depict(self, url, selector, destination, timeout):
         """
