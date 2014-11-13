@@ -1,0 +1,25 @@
+---
+aws_access_key: <insert key>
+aws_secret_key: <insert key>
+aws_bucket: <insert bucket>
+aws_root: elections-2014/screenshotter
+
+local_root: /tmp/
+log_file: /tmp/elections_screenshotter.log
+
+screenshot_timeout: 30
+time_between_screenshots: 60
+
+depict_timeout: 10
+depict_wait_for_js: false
+
+images:
+    - url: http://0.0.0.0:8000/
+      selector: '.election-results-map'
+      slug: senate
+    - url: http://0.0.0.0:8000/
+      selector: '.map-paths.map-path-id-16'
+      slug: idaho
+    - url: http://0.0.0.0:8000/
+      selector: '.map-paths.map-path-id-26'
+      slug: michigan
