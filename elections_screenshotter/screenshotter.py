@@ -63,7 +63,7 @@ class Screenshotter(object):
         if override_css_file:
             args = args + ['--css', override_css_file]
 
-        if self.config.get('wait_for_js_signal'):
+        if self.config.get('wait_for_js_signal', False):
             args = args + ['--call-phantom']
 
         logging.info('Running shell command: %s' % (args))
@@ -71,7 +71,8 @@ class Screenshotter(object):
         p = subprocess.Popen(args, stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE)
 
-        deadline = time.time() + self.config.get('screenshot_timeout')
+        # TODO Don't terminate if failure_timeout is set to 0
+        deadline = time.time() + self.config.get('failure_timeout', 30)
         while time.time() < deadline and p.poll() == None:
             time.sleep(1)
 
