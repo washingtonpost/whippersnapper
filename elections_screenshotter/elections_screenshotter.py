@@ -21,11 +21,11 @@ class ElectionsScreenshotter(object):
             self.usage()
             sys.exit(1)
 
+        self.init_logging()
         config_filepath = sys.argv[1]
         self.config = self.load_config(config_filepath)
         self.screenshotter = screenshotter.Screenshotter(self.config)
         self.uploader = uploader.Uploader(self.config)
-        self.init_logging()
 
     def main(self):
         """
