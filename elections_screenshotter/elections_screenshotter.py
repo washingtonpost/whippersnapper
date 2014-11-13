@@ -40,8 +40,9 @@ class ElectionsScreenshotter(object):
         """
         Create a log file, and attach a basic logger to it.
         """
+        log_default = os.path.dirname(os.path.abspath(__file__)) + '/../screenshotter.log'
         log_file = self.config.get('log_file',
-                '../screenshotter.log')
+                log_default)
         # Create the log file if it does not yet exist
         with open(log_file, 'a+'):
             pass
