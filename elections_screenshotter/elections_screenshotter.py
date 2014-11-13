@@ -23,7 +23,7 @@ class ElectionsScreenshotter(object):
 
         config_filepath = sys.argv[1]
         self.config = self.load_config(config_filepath)
-        self.init_logging()
+        self.log_file = self.init_logging()
         self.screenshotter = screenshotter.Screenshotter(self.config)
         if not self.config.get('skip_upload', False):
             self.uploader = uploader.Uploader(self.config)
@@ -32,6 +32,14 @@ class ElectionsScreenshotter(object):
         """
         Runs through the full screenshot process.
         """
+
+        print """
+Screenshotter is running. To view its log file:
+
+    tail -f %s
+
+To quit, press ^C (ctrl-C).""" % (self.log_file)
+
         while True:
             images = self.screenshotter.take_screenshots()
             try:
@@ -54,6 +62,7 @@ class ElectionsScreenshotter(object):
         logging.basicConfig(filename=log_file,
                 format='%(levelname)s:%(asctime)s %(message)s',
                 level=logging.INFO)
+        return log_file
 
     def load_config(self, config_filepath):
         """
