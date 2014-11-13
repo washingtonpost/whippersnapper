@@ -1,11 +1,30 @@
 import datetime
 
 class Target(object):
-#    def __init__(self, global_config, target_config):
+    def __init__(self, global_config, target_config):
+        self.combine_config_options(global_config, target_config)
 
+    def check_config_options(self):
+        required_options = ['slug', 'url']
 
-    def get_target_options(global_config, target_config):
+        for option in required_options:
+            try:
+                option in self
+            except KeyError:
+                raise RuntimeError('Required option %s missing' % option)
+
+    def combine_config_options(self, global_config, target_config):
+        """
+        Creates options for the target, prioritizing target-specific
+        options over global options.
+        """
         options_whitelist = ['page_load_delay', 'wait_for_js_signal', 'local_image_directory', 'aws_subpath', 'override_css_file', 'wait_for_js_signal', 'failure_timeout']
+
+        for option in options_whitelist:
+            self[option] = global_config[option]
+
+        for option in target_config:
+            self[option] = target_config[option]
 
     def filepath(self):
         """
@@ -24,7 +43,7 @@ class Target(object):
         Generates a local filepath for the image, using
         `generate_image_filepath()`
         """
-        local_image_directory = self.config.local_image_directory
+        local_image_directory = self.local_image_directory
         image_filepath = self.filepath()
         return '%s/%s' % (local_image_directory, image_filepath)
 
@@ -33,7 +52,7 @@ class Target(object):
         Generates an aws filepath for the image, using
         `generate_image_filepath()`
         """
-        aws_subpath = self.config.aws_subpath
+        aws_subpath = self.aws_subpath
         image_filepath = self.filepath()
         return '%s/%s' % (aws_subpath, image_filepath)
 
@@ -41,16 +60,16 @@ class Target(object):
         """
         Generates an aws "latest" filepath for the image.
         """
-        aws_subpath = self.config.aws_subpath
+        aws_subpath = self.aws_subpath
         slug = self.slug
         return '%s/%s/latest-%s.png' % (aws_subpath, slug, slug)
 
     def generate_public_url(self):
-            """
+        """
         Generates a public URL for the file.
         """
-        aws_bucket = self.config.aws_bucket
-        aws_subpath = self.config.aws_subpath
+        aws_bucket = self.aws_bucket
+        aws_subpath = self.aws_subpath
         return 'http://s3.amazonaws.com/%s/%s' % (aws_bucket, aws_filepath)
 
 def get_current_datetime_string():
