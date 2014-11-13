@@ -84,8 +84,8 @@ for taking screenshots.
 
 - **log_file** - String
 
-  Optional. Defaults to `/var/log/unnamed-screenshot-tool-log.txt`. Path
-  to a file to store logging information in.
+  Optional. Default: `$(pwd)/screenshotter.log` Path to a file to store
+  logging information in.
 
 - **delete_local_images**
 
