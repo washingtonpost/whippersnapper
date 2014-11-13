@@ -41,7 +41,7 @@ class ElectionsScreenshotter(object):
         Create a log file, and attach a basic logger to it.
         """
         log_file = self.config.get('log_file',
-                '/var/log/unnamed-screenshot-tool-log.txt')
+                '../screenshotter.log')
         # Create the log file if it does not yet exist
         with open(log_file, 'a+'):
             pass
