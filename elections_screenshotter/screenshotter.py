@@ -63,7 +63,7 @@ class Screenshotter(object):
         if override_css_file:
             args = args + ['--css', override_css_file]
 
-        if self.config.get('depict_wait_for_js'):
+        if self.config.get('wait_for_js_signal'):
             args = args + ['--call-phantom']
 
         logging.info('Running shell command: %s' % (args))
