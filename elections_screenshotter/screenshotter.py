@@ -58,9 +58,9 @@ class Screenshotter(object):
         """
         args = ['depict', url, destination, '-s', selector]
 
-        depict_css_file = self.config.get('depict_css_file')
-        if depict_css_file:
-            args = args + ['--css', depict_css_file]
+        override_css_file = self.config.get('override_css_file')
+        if override_css_file:
+            args = args + ['--css', override_css_file]
 
         if self.config.get('depict_wait_for_js'):
             args = args + ['--call-phantom', '--call-phantom-timeout', timeout]
