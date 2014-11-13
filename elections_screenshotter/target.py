@@ -29,6 +29,7 @@ class Target(object):
         for option in target_config:
             self[option] = target_config[option]
 
+    @property
     def filepath(self):
         """
         Generates a filepath for the image in the following form:
@@ -41,6 +42,7 @@ class Target(object):
         slug = self.slug
         return '%s/%s-%s.png' % (slug, current_datetime_string, slug)
 
+    @property
     def generate_image_local_filepath(self):
         """
         Generates a local filepath for the image, using
@@ -50,6 +52,7 @@ class Target(object):
         image_filepath = self.filepath()
         return '%s/%s' % (local_image_directory, image_filepath)
 
+    @property
     def generate_image_aws_filepath(self):
         """
         Generates an aws filepath for the image, using
@@ -59,6 +62,7 @@ class Target(object):
         image_filepath = self.filepath()
         return '%s/%s' % (aws_subpath, image_filepath)
 
+    @property
     def generate_image_aws_latest_filepath(self):
         """
         Generates an aws "latest" filepath for the image.
@@ -67,6 +71,7 @@ class Target(object):
         slug = self.slug
         return '%s/%s/latest-%s.png' % (aws_subpath, slug, slug)
 
+    @property
     def generate_public_url(self):
         """
         Generates a public URL for the file.
