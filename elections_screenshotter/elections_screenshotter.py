@@ -25,7 +25,8 @@ class ElectionsScreenshotter(object):
         self.config = self.load_config(config_filepath)
         self.init_logging()
         self.screenshotter = screenshotter.Screenshotter(self.config)
-        self.uploader = uploader.Uploader(self.config)
+        if not self.config.get('skip_upload', False):
+            self.uploader = uploader.Uploader(self.config)
 
     def main(self):
         """
@@ -33,7 +34,10 @@ class ElectionsScreenshotter(object):
         """
         while True:
             images = self.screenshotter.take_screenshots()
-            filepaths = self.uploader.upload_screenshots(images)
+            try:
+                filepaths = self.uploader.upload_screenshots(images)
+            except AttributeError:
+                pass
             time.sleep(self.config.get('time_between_screenshots', 60))
 
     def init_logging(self):
