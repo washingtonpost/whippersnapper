@@ -45,15 +45,15 @@ for taking screenshots.
       Optional. Defaults to `body`. The selector of the element you wish
       to screenshot.
 
-     - **slug** - String
+    - **slug** - String
 
       Required. Used to name the image files.
 
-     - **page_load_delay** - Number
+    - **page_load_delay** - Number
 
      Optional. Can be set on a global basis or per target.
 
-     - **wait_for_js_signal** - Boolean
+    - **wait_for_js_signal** - Boolean
 
      Optional. Can be set on a global basis or per target.
 
