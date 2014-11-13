@@ -30,9 +30,10 @@ class Screenshotter(object):
             try:
                 self.depict(
                     image.get('url'),
-                    image.get('selector'),
+                    image.get('selector', 'body'),
                     image.get('local_filepath'),
-                    str(int(self.config.get('page_load_delay', 2) * 1000))
+                    # Depict's delay argument is defined in milliseconds
+                    str(int(self.config.get('page_load_delay', 2)) * 1000)
                 )
                 images.append({
                     'slug': image.get('slug'),
@@ -76,12 +77,15 @@ class Screenshotter(object):
         p = subprocess.Popen(args, stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE)
 
-        # TODO Don't terminate if failure_timeout is set to 0
-        deadline = time.time() + self.config.get('failure_timeout', 30)
+        # Wait at most `failure_timeout` seconds for the process to finish
+        failure_timeout = self.config.get('failure_timeout', 30)
+        deadline = time.time() + failure_timeout
         while time.time() < deadline and p.poll() == None:
             time.sleep(1)
 
-        if p.poll() == None:
+        # If the failure timeout is more than 0 and the process still hasn't
+        # finished, terminate it.
+        if failure_timeout > 0 and p.poll() == None:
             p.terminate()
             raise RuntimeError('Terminated shell command: %s' % (args))
 

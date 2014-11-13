@@ -45,39 +45,48 @@ for taking screenshots.
       Optional. Defaults to `body`. The selector of the element you wish
       to screenshot.
 
-    - **page_load_delay** - Number
+    The following options can override the global options on a
+    per-target basis:
 
-     Optional. Can be set on a global basis or per target.
-
-    - **wait_for_js_signal** - Boolean
-
-     Optional. Can be set on a global basis or per target.
+    - **page_load_delay**
+    - **wait_for_js_signal**
+    - **local_image_directory**
+    - **aws_subpath**
+    - **override_css_file**
+    - **wait_for_js_signal**
+    - **failure_timeout**
 
 - **local_image_directory**
 
   Required. Local directory to store images in.
 
+- **skip_upload**
+
+  Optional. Default: false. Whether to skip the upload process.
+
 - **aws_bucket**
 
-  Required. Amazon S3 bucket to store the images in. Full path on AWS
-  will be `<aws_bucket>/<aws_subpath>`.
+  Required (unless `skip_upload` is true). Amazon S3 bucket to store the
+  images in. Full path on AWS will be `<aws_bucket>/<aws_subpath>`.
 
 - **aws_subpath**
 
-  Required. The rest of the Amazon S3 path to store the images in. Full
-  path on AWS will be `<aws_bucket>/<aws_subpath>`.
+  Required (unless `skip_upload` is true). The rest of the Amazon S3
+  path to store the images in. Full path on AWS will be
+  `<aws_bucket>/<aws_subpath>`.
 
 - **aws_access_key**
 
-  Required. Access key credential for Amazon S3.
+  Required (unless `skip_upload` is true). Access key credential for Amazon S3.
 
 - **aws_secret_key**
 
-  Required. Secret key credential for Amazon S3.
+  Required (unless `skip_upload` is true). Secret key credential for Amazon S3.
 
 - **log_file** - String
 
-  Optional. Defaults to `/var/log/unnamed-screenshot-tool-log.txt`. Path to a file to store logging information in.
+  Optional. Defaults to `/var/log/unnamed-screenshot-tool-log.txt`. Path
+  to a file to store logging information in.
 
 - **time_between_screenshots** - Number
 
