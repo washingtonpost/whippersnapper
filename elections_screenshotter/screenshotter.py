@@ -18,7 +18,13 @@ class Screenshotter(object):
 
     def get_target_config(self, image):
         pp = pprint.PrettyPrinter(indent=4)
-        pp.pprint(self.config)
+
+        options_whitelist = ['page_load_delay', 'wait_for_js_signal', 'local_image_directory', 'aws_subpath', 'override_css_file', 'wait_for_js_signal', 'failure_timeout']
+
+        for option in options_whitelist:
+            if self.config[option] and not image[option]:
+                image[option] = self.config[option]
+
         pp.pprint(image)
 
     def take_screenshots(self):

@@ -53,7 +53,6 @@ for taking screenshots.
     - **local_image_directory**
     - **aws_subpath**
     - **override_css_file**
-    - **wait_for_js_signal**
     - **failure_timeout**
 
 - **local_image_directory**
