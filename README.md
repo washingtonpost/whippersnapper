@@ -27,14 +27,14 @@ for taking screenshots.
 
 ## Config file options
 
-- **log_file** - String
-
-  Optional. Defaults to `/var/log/unnamed-screenshot-tool-log.txt`. Path to a file to store logging information in.
-
 - **targets** - List of target suboptions
 
   Required. A list of images to include. Each item in this list can
   include these suboptions:
+
+    - **slug** - String
+
+      Required. Used to name the image files.
 
     - **url**
 
@@ -45,15 +45,11 @@ for taking screenshots.
       Optional. Defaults to `body`. The selector of the element you wish
       to screenshot.
 
-     - **slug** - String
-
-      Required. Used to name the image files.
-
-     - **page_load_delay** - Number
+    - **page_load_delay** - Number
 
      Optional. Can be set on a global basis or per target.
 
-     - **wait_for_js_signal** - Boolean
+    - **wait_for_js_signal** - Boolean
 
      Optional. Can be set on a global basis or per target.
 
@@ -78,6 +74,10 @@ for taking screenshots.
 - **aws_secret_key**
 
   Required. Secret key credential for Amazon S3.
+
+- **log_file** - String
+
+  Optional. Defaults to `/var/log/unnamed-screenshot-tool-log.txt`. Path to a file to store logging information in.
 
 - **time_between_screenshots** - Number
 
