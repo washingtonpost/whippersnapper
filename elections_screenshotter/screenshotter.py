@@ -44,7 +44,7 @@ class Screenshotter(object):
         image['filepath'] = util.generate_image_filepath(
                 self.current_datetime_string, image.get('slug'))
         image['local_filepath'] = util.generate_image_local_filepath(
-                self.config.get('local_root'),
+                self.config.get('local_image_directory'),
                 self.current_datetime_string, image.get('slug'))
         image['aws_filepath'] = util.generate_image_aws_filepath(
                 self.config.get('aws_root'),

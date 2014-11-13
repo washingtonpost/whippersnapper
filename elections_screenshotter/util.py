@@ -10,13 +10,14 @@ def generate_image_filepath(current_datetime_string, slug):
     """
     return '%s/%s-%s.png' % (slug, current_datetime_string, slug)
 
-def generate_image_local_filepath(local_root, current_datetime_string, slug):
+def generate_image_local_filepath(local_image_directory,
+        current_datetime_string, slug):
     """
     Generates a local filepath for the image, using
     `generate_image_filepath()`
     """
-    return '%s/%s' % (
-            local_root, generate_image_filepath(current_datetime_string, slug))
+    return '%s/%s' % (local_image_directory,
+            generate_image_filepath(current_datetime_string, slug))
 
 def generate_image_aws_filepath(aws_root, current_datetime_string, slug):
     """
