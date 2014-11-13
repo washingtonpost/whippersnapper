@@ -27,7 +27,7 @@ class Screenshotter(object):
                     image.get('url'),
                     image.get('selector'),
                     image.get('local_filepath'),
-                    str(self.config.get('depict_timeout'))
+                    str(int(self.config.get('page_load_delay', 2) * 1000))
                 )
                 images.append({
                     'slug': image.get('slug'),
@@ -52,18 +52,19 @@ class Screenshotter(object):
         image['aws_latest_filepath'] = util.generate_image_aws_latest_filepath(
                 self.config.get('aws_subpath'), image.get('slug'))
 
-    def depict(self, url, selector, destination, timeout):
+    def depict(self, url, selector, destination, page_load_delay):
         """
         Runs the command-line utility `depict`.
         """
-        args = ['depict', url, destination, '-s', selector]
+        args = ['depict', url, destination, '-s', selector,
+                '--delay', page_load_delay]
 
         override_css_file = self.config.get('override_css_file')
         if override_css_file:
             args = args + ['--css', override_css_file]
 
         if self.config.get('depict_wait_for_js'):
-            args = args + ['--call-phantom', '--call-phantom-timeout', timeout]
+            args = args + ['--call-phantom']
 
         logging.info('Running shell command: %s' % (args))
 
