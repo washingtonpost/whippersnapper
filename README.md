@@ -45,13 +45,16 @@ for taking screenshots.
       Optional. Defaults to `body`. The selector of the element you wish
       to screenshot.
 
-    - **page_load_delay** - Number
+    The following options can override the global options on a
+    per-target basis:
 
-     Optional. Can be set on a global basis or per target.
-
-    - **wait_for_js_signal** - Boolean
-
-     Optional. Can be set on a global basis or per target.
+    - **page_load_delay**
+    - **wait_for_js_signal**
+    - **local_image_directory**
+    - **aws_subpath**
+    - **override_css_file**
+    - **wait_for_js_signal**
+    - **failure_timeout**
 
 - **local_image_directory**
 
