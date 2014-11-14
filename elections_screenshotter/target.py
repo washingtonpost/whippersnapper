@@ -2,21 +2,18 @@ import datetime
 
 class Target(object):
     def __init__(self, global_config, target_config):
-        self.check_config_options()
+        self.check_config_options(target_config)
         self.combine_config_options(global_config, target_config)
 
-    def check_config_options(self):
+    def check_config_options(self, target_config):
         """
         Checking for the required target options.
         """
         required_options = ['slug', 'url']
 
         for option in required_options:
-            try:
-                # TODO use if hasattr
-                option in self
-            except KeyError:
-                raise RuntimeError('Required option %s missing' % option)
+            if not option in target_config:
+                raise RuntimeError('Missing required option %s' % option)
 
     def combine_config_options(self, global_config, target_config):
         """
