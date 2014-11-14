@@ -8,7 +8,7 @@ setup(
     author='Kevin Schaul, Katie Park',
     author_email='kevin.schaul@washpost.com, katie.park@washpost.com',
     url='http://github.com/washingtonpost/whippersnapper',
-    description='',
+    description='Whippersnapper is an automated screenshot tool to keep a visual history of content on the web.',
     long_description='Check out the project on GitHub for the latest information <http://github.com/washingtonpost/whippersnapper>',
     classifiers=[
         'Development Status :: 4 - Beta',
