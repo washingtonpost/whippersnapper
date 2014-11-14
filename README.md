@@ -53,7 +53,12 @@ This will install the command `whippersnapper`.
 Create whippersnapper's config file. This file may be a good
 starting point:
 
-- [config.yaml.template](config.yaml.template)
+- [config.yaml.template](config_templates/config.yaml.template)
+
+The [config_templates](config_templates) directory includes a few
+examples of different ways you might use Whippersnapper, such as [only
+storing the images locally](config_templates/local.yaml.template) or [setting target-specific
+options](config_templates/targets.yaml.template).
 
 Then, run `whippersnapper` with this config file as its first argument:
 
