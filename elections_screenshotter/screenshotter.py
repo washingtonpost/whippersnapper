@@ -22,6 +22,7 @@ class Screenshotter(object):
         for image in self.config.get('images'):
             current_target = target.Target(self.config, image)
             try:
+                print type(current_target), type(current_target.get('url'))
                 self.depict(
                     current_target.get('url'),
                     current_target.get('selector', 'body'),
