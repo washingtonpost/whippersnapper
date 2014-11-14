@@ -57,7 +57,7 @@ Finally, set up whippersnapper's config file by copying
 
 ## Usage
 
-    python whippersnapper/whippersnapper.py CONFIG_PATH
+    whippersnapper CONFIG_PATH
 
 ## Config file options
 
