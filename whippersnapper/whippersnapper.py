@@ -5,6 +5,7 @@ import os
 import subprocess
 import sys
 import time
+import inspect
 
 import yaml
 
@@ -112,9 +113,7 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
         return config
 
     def usage(self):
-        config_template_file = os.path.abspath(os.path.expanduser(
-                os.path.dirname(os.path.abspath(__file__))
-                + '/config_templates/config.yaml.template'))
+        config_template_file = 'https://raw.githubusercontent.com/washingtonpost/whippersnapper/master/config_templates/config.yaml.template'
 
         """
         Print usage information.
@@ -124,7 +123,7 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
 
         To see an example config file:
 
-        cat %s
+        curl %s
         """ % config_template_file
 
 def launch_new_instance():
