@@ -67,8 +67,9 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
         """
         Load configuration from config.yaml.
 
-        This file includes the urls, css selectors and slugs for the images to
-        screenshot.
+        Many options have defaults; use these unless they are overwritten in
+        config.yaml. This file includes the urls, css selectors and slugs for
+        the images to screenshot.
         """
         config = {
             'skip_upload': False,
