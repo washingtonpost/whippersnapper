@@ -1,0 +1,28 @@
+---
+# Config template for multiple targets with different options
+
+aws_access_key: <insert key>
+aws_secret_key: <insert key>
+aws_bucket: <insert bucket>
+aws_subpath: screenshots
+
+local_image_directory: /tmp
+
+time_between_screenshots: 180
+failure_timeout: 45
+
+targets:
+    - url: http://www.washingtonpost.com/
+      slug: washington-post
+      selector: '#content > .wp-row > .wp-column > .container'
+      aws_subpath: screenshots/wp-hp
+      page_load_delay: 2
+    - url: https://news.ycombinator.com/
+      slug: hacker-news
+      aws_subpath: screenshots/hn-hp
+      page_load_delay: 4
+    - url: http://www.drudgereport.com/
+      slug: drudge-report
+      selector: '#drudgeTopHeadlines'
+      aws_subpath: screenshots/dr-hp
+      page_load_delay: 2
