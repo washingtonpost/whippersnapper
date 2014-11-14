@@ -2,11 +2,6 @@
 
 Automates taking screenshots on the Internet.
 
-## Technical overview
-
-This tool relies on [depict](https://github.com/kevinschaul/depict)
-for taking screenshots.
-
 ## Installation (these are rough instructions)
 
     # Install depict
