@@ -2,18 +2,36 @@
 
 Automates taking screenshots on the Internet.
 
-## Installation (these are rough instructions)
+## Installation
+
+Whippersnapper requires [PhantomJS](http://phantomjs.org/) and
+[depict](https://github.com/kevinschaul/depict) to be installed. On OS
+X, these can be installed via [homebrew](http://brew.sh/) and
+[node's](http://www.nodejs.org/) package manager
+[npm](https://www.npmjs.org/):
+
+    # Install phantomjs
+    brew update
+    brew install phantomjs
 
     # Install depict
     npm install -g depict
+
+Then, install whippersnapper's python dependencies. We recommend using
+[pip](http://pip.readthedocs.org/en/latest/index.html) with
+[virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/):
 
     # Install python dependencies
     mkvirtualenv whippersnapper
     pip install -r requirements.txt
 
+Finally, set up whippersnapper's config file by copying
+`config.yaml.template` and editing in your favorite text editor.
+
     # Set up configuration
     cp config.yaml.template config.yaml
-    # Add AWS keys to config.yaml
+
+    # Edit config.yaml
     vim config.yaml
 
 ## Usage
