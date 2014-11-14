@@ -25,6 +25,8 @@ class Target(object):
         # TODO Refactor to get all defaults
         global_config['page_load_delay'] = 0
         global_config['wait_for_js_signal'] = False
+        global_config['override_css_file'] = False
+        global_config['failure_timeout'] = 0
 
         print dir(self)
 
@@ -32,7 +34,7 @@ class Target(object):
             setattr(self, option, global_config[option])
 
         for option in target_config:
-            setattr(self, option, global_config[option])
+            setattr(self, option, target_config[option])
 
     @property
     def filepath(self):
