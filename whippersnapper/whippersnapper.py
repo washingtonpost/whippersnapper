@@ -111,12 +111,20 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
         return config
 
     def usage(self):
+        config_template_file = os.path.abspath(os.path.expanduser(
+                os.path.dirname(os.path.abspath(__file__))
+                + '/../config.yaml.template'))
+
         """
         Print usage information.
         """
         print """
         USAGE: whippersnapper CONFIG_FILEPATH
-        """
+
+        To see an example config file:
+
+        cat %s
+        """ % config_template_file
 
 def launch_new_instance():
     """
