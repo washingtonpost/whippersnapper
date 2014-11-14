@@ -1,5 +1,4 @@
 import logging
-import util
 
 from boto.s3.connection import Key, S3Connection
 

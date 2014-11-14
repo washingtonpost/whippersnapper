@@ -1,6 +1,6 @@
 # Unnamed screenshot tool
 
-Creates static, "backup" images for the Internet.
+Automates taking screenshots on the Internet.
 
 ## Technical overview
 
