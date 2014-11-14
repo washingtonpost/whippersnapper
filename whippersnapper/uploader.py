@@ -23,13 +23,14 @@ class Uploader(object):
         """
         filepaths = []
         for image in images:
-            filepaths.append(self.upload(image.get('local_filepath'),
-                    image.get('aws_filepath')))
-            logging.info('Sucessfully uploaded image to %s' % (filepaths[-1]))
+            filepaths.append(self.upload(image.local_filepath,
+                    image.aws_filepath))
+            logging.info('Sucessfully uploaded image to %s' % image.public_url)
 
-            filepaths.append(self.upload(image.get('local_filepath'),
-                    image.get('aws_latest_filepath')))
-            logging.info('Sucessfully uploaded image to %s' % (filepaths[-1]))
+            filepaths.append(self.upload(image.local_filepath,
+                    image.aws_latest_filepath))
+            logging.info('Sucessfully uploaded image to %s'
+                    % image.public_latest_url)
         return filepaths
 
     def upload(self, local_filepath, aws_filepath):
@@ -45,4 +46,3 @@ class Uploader(object):
         key.key = aws_filepath
         key.set_contents_from_filename(local_filepath)
         key.set_acl('public-read')
-        return self.get('public_url')

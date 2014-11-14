@@ -26,7 +26,16 @@ class Target(object):
         Creates options for the target, prioritizing target-specific
         options over global options.
         """
-        options_whitelist = ['page_load_delay', 'wait_for_js_signal', 'local_image_directory', 'aws_subpath', 'override_css_file', 'wait_for_js_signal', 'failure_timeout']
+        options_whitelist = [
+            'page_load_delay',
+            'wait_for_js_signal',
+            'local_image_directory',
+            'aws_bucket',
+            'aws_subpath',
+            'override_css_file',
+            'wait_for_js_signal',
+            'failure_timeout',
+        ]
 
         for option in options_whitelist:
             setattr(self, option, global_config[option])
@@ -82,7 +91,19 @@ class Target(object):
         """
         aws_bucket = self.aws_bucket
         aws_subpath = self.aws_subpath
+        aws_filepath = self.aws_filepath
         return 'http://s3.amazonaws.com/%s/%s' % (aws_bucket, aws_filepath)
+
+    @property
+    def public_latest_url(self):
+        """
+        Generates a public "latest" URL for the file.
+        """
+        aws_bucket = self.aws_bucket
+        aws_subpath = self.aws_subpath
+        aws_latest_filepath = self.aws_latest_filepath
+        return ('http://s3.amazonaws.com/%s/%s'
+                % (aws_bucket, aws_latest_filepath))
 
 def get_current_datetime_string():
     """

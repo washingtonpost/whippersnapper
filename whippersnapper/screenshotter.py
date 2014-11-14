@@ -30,13 +30,7 @@ class Screenshotter(object):
                     # Depict's delay argument is defined in milliseconds
                     str(int(current_target.page_load_delay) * 1000)
                 )
-                targets.append({
-                    'slug': current_target.slug,
-                    'filepath': current_target.filepath,
-                    'local_filepath': current_target.local_filepath,
-                    'aws_filepath': current_target.aws_filepath,
-                    'aws_latest_filepath': current_target.aws_latest_filepath,
-                })
+                targets.append(current_target)
             except RuntimeError as e:
                 logging.error(e)
         return targets
