@@ -46,14 +46,10 @@ We recommend using
     mkvirtualenv whippersnapper
     pip install whippersnapper
 
-Finally, set up whippersnapper's config file by copying
-`config.yaml.template` and editing in your favorite text editor.
+Finally, create whippersnapper's config file. This file may be a good
+starting point:
 
-    # Set up configuration
-    cp config.yaml.template config.yaml
-
-    # Edit config.yaml
-    vim config.yaml
+- [config.yaml.template](config.yaml.template)
 
 ## Usage
 
