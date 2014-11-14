@@ -1,5 +1,4 @@
 import logging
-import util
 
 from boto.s3.connection import Key, S3Connection
 
@@ -46,5 +45,4 @@ class Uploader(object):
         key.key = aws_filepath
         key.set_contents_from_filename(local_filepath)
         key.set_acl('public-read')
-        return util.generate_public_url(self.config.get('aws_bucket'),
-                aws_filepath)
+        return self.get('public_url')

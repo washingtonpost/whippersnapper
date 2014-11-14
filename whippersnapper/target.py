@@ -53,7 +53,6 @@ class Target(object):
         `generate_image_filepath()`
         """
         local_image_directory = os.path.abspath(os.path.expanduser(self.local_image_directory))
-        print local_image_directory
         image_filepath = self.filepath
         return '%s/%s' % (local_image_directory, image_filepath)
 
