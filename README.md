@@ -9,6 +9,9 @@ are notoriously volatile for news organizations, so we planned to store
 static image versions of our results maps throughout the night in case
 the need for a fallback arose.
 
+![U.S. House map gif](./us-house.gif)
+An animation of the U.S. House maps captured on election night 2014.
+
 ## Use cases
 
 As a backup tool, Whippersnapper can capture any CSS selector on the
