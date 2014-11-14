@@ -2,7 +2,7 @@
 # Config template to save all images locally and skip publishing to S3
 
 local_image_directory: /tmp
-skip_upload: false
+skip_upload: true
 
 targets:
     - url: http://www.washingtonpost.com/
