@@ -1,6 +1,13 @@
 # Whippersnapper
 
-Automates taking screenshots on the Internet.
+Whippersnapper is an automated screenshot tool to keep a visual history
+of content on the web.
+
+The concept for Whippersnapper first came up as a last-ditch backup system
+for the Washington Post's live election results maps. Election nights
+are notoriously volatile for news organizations, so we planned to store
+static image versions of our results maps throughout the night in case
+the need for a fallback arose.
 
 ## Technical overview
 
