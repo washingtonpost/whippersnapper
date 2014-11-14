@@ -55,16 +55,16 @@ starting point:
 
 - [config.yaml.template](config_templates/config.yaml.template)
 
-The [config_templates](config_templates) directory includes a few
-examples of different ways you might use Whippersnapper, such as [only
-storing the images locally](config_templates/local.yaml.template) or [setting target-specific
-options](config_templates/targets.yaml.template).
-
 Then, run `whippersnapper` with this config file as its first argument:
 
     whippersnapper CONFIG_PATH
 
 ### Config file options
+
+The [config_templates](config_templates) directory includes a few
+examples of different ways you might use Whippersnapper, such as [only
+storing the images locally](config_templates/local.yaml.template) or
+[setting target-specific options](config_templates/targets.yaml.template).
 
 - **targets** - List of target suboptions
 
@@ -86,13 +86,12 @@ Then, run `whippersnapper` with this config file as its first argument:
 
     The following options can override the global options on a
     per-target basis:
-
-    - **page_load_delay**
-    - **wait_for_js_signal**
-    - **local_image_directory**
-    - **aws_subpath**
-    - **override_css_file**
-    - **failure_timeout**
+      - **page_load_delay**
+      - **wait_for_js_signal**
+      - **local_image_directory**
+      - **aws_subpath**
+      - **override_css_file**
+      - **failure_timeout**
 
 - **local_image_directory**
 
@@ -100,7 +99,7 @@ Then, run `whippersnapper` with this config file as its first argument:
 
 - **skip_upload**
 
-  Optional. Default: false. Whether to skip the upload process.
+  Optional. Default: `false`. Whether to skip the upload process.
 
 - **aws_bucket**
 
@@ -126,9 +125,9 @@ Then, run `whippersnapper` with this config file as its first argument:
   Optional. Default: `$(pwd)/screenshotter.log` Path to a file to store
   logging information in.
 
-- **delete_local_images**
+- **delete_local_images** - Boolean
 
-  Optional. Default: false. Whether to delete the local images after
+  Optional. Default: `false`. Whether to delete the local images after
   uploading them to Amazon S3.
 
 - **time_between_screenshots** - Number
