@@ -9,11 +9,6 @@ are notoriously volatile for news organizations, so we planned to store
 static image versions of our results maps throughout the night in case
 the need for a fallback arose.
 
-## Technical overview
-
-This tool relies on [depict](https://github.com/kevinschaul/depict)
-for taking screenshots.
-
 ## Installation (these are rough instructions)
 
     # Install depict
