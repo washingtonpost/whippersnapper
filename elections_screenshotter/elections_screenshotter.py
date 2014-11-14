@@ -41,11 +41,12 @@ Screenshotter is running. To view its log file:
 To quit, press ^C (ctrl-C).""" % (self.log_file)
 
         while True:
-            images = self.screenshotter.take_screenshots()
+            targets = self.screenshotter.take_screenshots()
             try:
-                filepaths = self.uploader.upload_screenshots(images)
+                filepaths = self.uploader.upload_screenshots(targets)
+                # TODO Image delete code probably doesn't belong here
                 if (self.config.get('delete_local_images')):
-                    [os.remove(path.get('local_filepath')) for path in images]
+                    [os.remove(path.get('local_filepath')) for path in targets]
             except AttributeError:
                 pass
             time.sleep(self.config.get('time_between_screenshots'))
@@ -67,8 +68,9 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
         """
         Load configuration from config.yaml.
 
-        This file includes the urls, css selectors and slugs for the images to
-        screenshot.
+        Many options have defaults; use these unless they are overwritten in
+        config.yaml. This file includes the urls, css selectors and slugs for
+        the targets to screenshot.
         """
 
         log_file = os.path.abspath(os.path.expanduser(os.path.dirname(os.path.abspath(__file__)) + '/../screenshotter.log'))
@@ -89,7 +91,7 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
         }
 
         required = (
-            'images',
+            'targets',
             'local_image_directory',
         )
 
@@ -105,7 +107,8 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
             try:
                 config[option] = raw_config[option]
             except KeyError:
-                raise RuntimeError('Config does not have required attribute: %s' % option)
+                raise RuntimeError('Config is missing required attribute: %s'
+                        % option)
 
         return config
 

@@ -18,9 +18,9 @@ class Screenshotter(object):
         """
         Runs through the process of taking all screenshots.
         """
-        images = []
-        for image in self.config.get('images'):
-            current_target = target.Target(self.config, image)
+        targets = []
+        for target_config in self.config.get('targets'):
+            current_target = target.Target(self.config, target_config)
             try:
                 self.depict(
                     current_target.url,
@@ -29,7 +29,7 @@ class Screenshotter(object):
                     # Depict's delay argument is defined in milliseconds
                     str(int(current_target.page_load_delay) * 1000)
                 )
-                images.append({
+                targets.append({
                     'slug': current_target.slug,
                     'filepath': current_target.filepath,
                     'local_filepath': current_target.local_filepath,
@@ -38,7 +38,7 @@ class Screenshotter(object):
                 })
             except RuntimeError as e:
                 logging.error(e)
-        return images
+        return targets
 
     def depict(self, url, selector, destination, page_load_delay):
         """
