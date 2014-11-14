@@ -5,6 +5,7 @@ import os
 import subprocess
 import sys
 import time
+import inspect
 
 import yaml
 
@@ -112,8 +113,8 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
 
     def usage(self):
         config_template_file = os.path.abspath(os.path.expanduser(
-                os.path.dirname(os.path.abspath(__file__))
-                + '/config_templates/config.yaml.template'))
+                os.path.abspath(os.path.dirname(inspect.getfile(inspect.currentframe())))
+                + '/../config_templates/config.yaml.template'))
 
         """
         Print usage information.
