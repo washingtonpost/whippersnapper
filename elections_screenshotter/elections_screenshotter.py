@@ -70,14 +70,16 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
         This file includes the urls, css selectors and slugs for the images to
         screenshot.
         """
+
+        log_file = os.path.abspath(os.path.expanduser(os.path.dirname(os.path.abspath(__file__)) + '/../screenshotter.log'))
+
         config = {
             'skip_upload': False,
             'aws_bucket': '',
             'aws_subpath': '',
             'aws_access_key': None,
             'aws_secret_key': None,
-            'log_file': os.path.dirname(os.path.abspath(__file__)) +
-                   '/../screenshotter.log',
+            'log_file': log_file,
             'delete_local_images': False,
             'time_between_screenshots': 60,
             'override_css_file': None,
