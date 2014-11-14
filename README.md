@@ -9,6 +9,18 @@ are notoriously volatile for news organizations, so we planned to store
 static image versions of our results maps throughout the night in case
 the need for a fallback arose.
 
+## Use cases
+
+As a backup tool, Whippersnapper can capture any CSS selector on the
+target website and publish timestamped image files to Amazon S3. It
+automatically updates a "latest" image file so you can always access the
+most recent screenshot of the target.
+
+Whippersnapper doesn't have to be used as a static backup system,
+though. It can be pointed at any page on the web to monitor and record
+changes -- consider using it to visualize how content on the web changes
+over time.
+
 ## Installation (these are rough instructions)
 
     # Install depict
