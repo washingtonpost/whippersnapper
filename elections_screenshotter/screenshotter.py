@@ -1,5 +1,6 @@
 import datetime
 import logging
+import pipes
 import subprocess
 import time
 
@@ -54,9 +55,17 @@ class Screenshotter(object):
         if self.config.get('wait_for_js_signal', False):
             args = args + ['--call-phantom']
 
-        logging.info('Running shell command: %s' % (args))
+        # Quote each argument and combine them into a single string
+        args_string = ''
+        for arg in args:
+            quoted_arg = pipes.quote(arg)
+            args_string += ' ' + quoted_arg
 
-        p = subprocess.Popen(args, stdout=subprocess.PIPE,
+        logging.info('Running shell command: %s' % (args_string))
+
+        # Use shell=True because selectors may contain characters that would
+        # otherwise be stripped out by subprocess.Popen() (e.g. `#`, `<`, etc.
+        p = subprocess.Popen(args_string, shell=True, stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE)
 
         # Wait at most `failure_timeout` seconds for the process to finish
