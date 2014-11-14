@@ -104,7 +104,8 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
             try:
                 config[option] = raw_config[option]
             except KeyError:
-                raise RuntimeError('Config does not have required attribute: %s' % option)
+                raise RuntimeError('Config is missing required attribute: %s'
+                        % option)
 
         return config
 

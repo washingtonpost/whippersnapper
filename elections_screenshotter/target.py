@@ -4,6 +4,7 @@ class Target(object):
     def __init__(self, global_config, target_config):
         self.check_config_options(target_config)
         self.combine_config_options(global_config, target_config)
+        self.current_datetime_string = get_current_datetime_string()
 
     def check_config_options(self, target_config):
         """
@@ -41,9 +42,8 @@ class Target(object):
 
         Used to generate local and aws filepaths.
         """
-        current_datetime_string = get_current_datetime_string()
         slug = self.slug
-        return '%s/%s-%s.png' % (slug, current_datetime_string, slug)
+        return '%s/%s-%s.png' % (slug, self.current_datetime_string, slug)
 
     @property
     def local_filepath(self):
