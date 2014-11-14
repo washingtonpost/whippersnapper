@@ -73,7 +73,8 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
         the targets to screenshot.
         """
 
-        log_file = os.path.abspath(os.path.expanduser(os.path.dirname(os.path.abspath(__file__)) + '/../screenshotter.log'))
+        log_file = os.path.abspath(os.path.expanduser(os.path.dirname(
+                os.path.abspath(__file__)) + '/../whippersnapper.log'))
 
         config = {
             'skip_upload': False,
