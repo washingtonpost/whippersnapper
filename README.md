@@ -1,4 +1,4 @@
-# Unnamed screenshot tool
+# Whippersnapper
 
 Creates static, "backup" images for the Internet.
 
@@ -13,7 +13,7 @@ for taking screenshots.
     npm install -g depict
 
     # Install python dependencies
-    mkvirtualenv elections-screenshot-tool
+    mkvirtualenv whippersnapper
     pip install -r requirements.txt
 
     # Set up configuration
@@ -23,7 +23,7 @@ for taking screenshots.
 
 ## Usage
 
-    python elections_screenshotter/elections_screenshotter.py CONFIG_PATH
+    python whippersnapper/whippersnapper.py CONFIG_PATH
 
 ## Config file options
 

@@ -11,7 +11,7 @@ import yaml
 import screenshotter
 import uploader
 
-class ElectionsScreenshotter(object):
+class WhipperSnapper(object):
     """
     Implements all screenshot-related logic.
     """
@@ -34,7 +34,7 @@ class ElectionsScreenshotter(object):
         """
 
         print """
-Screenshotter is running. To view its log file:
+Whippersnapper is running. To view its log file:
 
     tail -f %s
 
@@ -117,18 +117,15 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
         Print usage information.
         """
         print """
-        USAGE: elections_screenshotter CONFIG_FILEPATH
+        USAGE: whippersnapper CONFIG_FILEPATH
         """
 
 def launch_new_instance():
     """
-    Launch an instance of ElectionsScreenshotter.
-
-    This is the entry function of the command-line tool
-    `elections_screenshotter`.
+    Launch an instance of Whippersnapper.
     """
     try:
-        s = ElectionsScreenshotter()
+        s = WhipperSnapper()
         s.main()
     except KeyboardInterrupt:
         # Print a blank line
