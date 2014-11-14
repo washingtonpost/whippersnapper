@@ -36,13 +36,15 @@ X, these can be installed via [homebrew](http://brew.sh/) and
     # Install depict
     npm install -g depict
 
-Then, install whippersnapper's python dependencies. We recommend using
+Then, install whippersnapper from
+(PyPI)[https://pypi.python.org/pypi?name=whippersnapper&version=0.0.0&:action=display].
+We recommend using
 [pip](http://pip.readthedocs.org/en/latest/index.html) with
 [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/):
 
     # Install python dependencies
     mkvirtualenv whippersnapper
-    pip install -r requirements.txt
+    pip install whippersnapper
 
 Finally, set up whippersnapper's config file by copying
 `config.yaml.template` and editing in your favorite text editor.
