@@ -52,7 +52,7 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
         """
         Create a log file, and attach a basic logger to it.
         """
-        log_file = self.config.get('log_file')
+        log_file = os.path.abspath(os.path.expanduser(self.config.get('log_file')))
         # Create the log file if it does not yet exist
         with open(log_file, 'a+'):
             pass
@@ -113,7 +113,7 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
     def usage(self):
         config_template_file = os.path.abspath(os.path.expanduser(
                 os.path.dirname(os.path.abspath(__file__))
-                + '/../config_templates/config.yaml.template'))
+                + '/config_templates/config.yaml.template'))
 
         """
         Print usage information.
