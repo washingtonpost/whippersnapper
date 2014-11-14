@@ -56,7 +56,7 @@ class Target(object):
         `generate_image_filepath()`
         """
         local_image_directory = self.local_image_directory
-        image_filepath = self.filepath()
+        image_filepath = self.filepath
         return '%s/%s' % (local_image_directory, image_filepath)
 
     @property
@@ -66,7 +66,7 @@ class Target(object):
         `generate_image_filepath()`
         """
         aws_subpath = self.aws_subpath
-        image_filepath = self.filepath()
+        image_filepath = self.filepath
         return '%s/%s' % (aws_subpath, image_filepath)
 
     @property
