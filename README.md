@@ -167,3 +167,12 @@ Then, run `whippersnapper` with this config file as its first argument:
   remains open. If PhantomJS can't open the page or something hangs up,
   this will kill the process. For no time limit, set `failure_timeout`
   to `0`.
+
+## Create gifs
+
+Some uses of Whippersnapper lend themselves well to creating gifs of
+images. To do that, install [ImageMagick](http://www.imagemagick.org/)
+and run a command like the following:
+
+    convert -delay 10 *.png weather.gif
+
