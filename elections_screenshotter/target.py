@@ -2,6 +2,7 @@ import datetime
 
 class Target(object):
     def __init__(self, global_config, target_config):
+        self.check_config_options()
         self.combine_config_options(global_config, target_config)
 
     def check_config_options(self):
@@ -12,6 +13,7 @@ class Target(object):
 
         for option in required_options:
             try:
+                # TODO use if hasattr
                 option in self
             except KeyError:
                 raise RuntimeError('Required option %s missing' % option)
@@ -23,11 +25,17 @@ class Target(object):
         """
         options_whitelist = ['page_load_delay', 'wait_for_js_signal', 'local_image_directory', 'aws_subpath', 'override_css_file', 'wait_for_js_signal', 'failure_timeout']
 
+        # TODO Refactor to get all defaults
+        global_config['page_load_delay'] = 0
+        global_config['wait_for_js_signal'] = False
+
+        print dir(self)
+
         for option in options_whitelist:
-            self[option] = global_config[option]
+            setattr(self, option, global_config[option])
 
         for option in target_config:
-            self[option] = target_config[option]
+            setattr(self, option, global_config[option])
 
     @property
     def filepath(self):

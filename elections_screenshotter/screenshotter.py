@@ -20,21 +20,21 @@ class Screenshotter(object):
         """
         images = []
         for image in self.config.get('images'):
-            target = target.Target(self.config, image)
+            current_target = target.Target(self.config, image)
             try:
                 self.depict(
-                    target.get('url'),
-                    target.get('selector', 'body'),
-                    target.get('local_filepath'),
+                    current_target.get('url'),
+                    current_target.get('selector', 'body'),
+                    current_target.get('local_filepath'),
                     # Depict's delay argument is defined in milliseconds
-                    str(int(target.get('page_load_delay', 2)) * 1000)
+                    str(int(current_target.get('page_load_delay', 2)) * 1000)
                 )
                 images.append({
-                    'slug': target.get('slug'),
-                    'filepath': target.get('filepath'),
-                    'local_filepath': target.get('local_filepath'),
-                    'aws_filepath': target.get('aws_filepath'),
-                    'aws_latest_filepath': target.get('aws_latest_filepath'),
+                    'slug': current_target.get('slug'),
+                    'filepath': current_target.get('filepath'),
+                    'local_filepath': current_target.get('local_filepath'),
+                    'aws_filepath': current_target.get('aws_filepath'),
+                    'aws_latest_filepath': current_target.get('aws_latest_filepath'),
                 })
             except RuntimeError as e:
                 logging.error(e)
