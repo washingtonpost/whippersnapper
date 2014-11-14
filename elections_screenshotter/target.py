@@ -15,20 +15,16 @@ class Target(object):
             if not option in target_config:
                 raise RuntimeError('Missing required option %s' % option)
 
+        if not 'selector' in target_config:
+            target_config['selector'] = 'body'
+
+
     def combine_config_options(self, global_config, target_config):
         """
         Creates options for the target, prioritizing target-specific
         options over global options.
         """
         options_whitelist = ['page_load_delay', 'wait_for_js_signal', 'local_image_directory', 'aws_subpath', 'override_css_file', 'wait_for_js_signal', 'failure_timeout']
-
-        # TODO Refactor to get all defaults
-        global_config['page_load_delay'] = 0
-        global_config['wait_for_js_signal'] = False
-        global_config['override_css_file'] = False
-        global_config['failure_timeout'] = 0
-
-        print dir(self)
 
         for option in options_whitelist:
             setattr(self, option, global_config[option])
