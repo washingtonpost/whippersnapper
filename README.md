@@ -37,7 +37,7 @@ X, these can be installed via [homebrew](http://brew.sh/) and
     npm install -g depict
 
 Then, install whippersnapper from
-(PyPI)[https://pypi.python.org/pypi?name=whippersnapper&version=0.0.0&:action=display].
+[PyPI](https://pypi.python.org/pypi/whippersnapper).
 We recommend using
 [pip](http://pip.readthedocs.org/en/latest/index.html) with
 [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/):
