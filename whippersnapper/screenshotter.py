@@ -72,7 +72,7 @@ class Screenshotter(object):
         # finished, terminate it.
         if failure_timeout > 0 and p.poll() == None:
             p.terminate()
-            raise RuntimeError('Terminated shell command: %s' % (args))
+            raise RuntimeError('Terminated shell command: %s' % (args_string))
 
         out, err = p.communicate()
         if p.returncode != 0:
