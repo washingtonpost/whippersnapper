@@ -9,8 +9,13 @@ are notoriously volatile for news organizations, so we planned to store
 static image versions of our results maps throughout the night in case
 the need for a fallback arose.
 
-![U.S. House map gif](./us-house.gif)
-An animation of the U.S. House maps captured on election night 2014.
+<p align="center">
+    <img src="https://raw.githubusercontent.com/washingtonpost/whippersnapper/master/us-house.gif" alt="U.S. House map"/>
+</p>
+
+<p align="center">
+    <em>An animation of the U.S. House maps captured on election night 2014.</em>
+</p>
 
 ## Use cases
 
