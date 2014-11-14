@@ -41,11 +41,12 @@ Screenshotter is running. To view its log file:
 To quit, press ^C (ctrl-C).""" % (self.log_file)
 
         while True:
-            images = self.screenshotter.take_screenshots()
+            targets = self.screenshotter.take_screenshots()
             try:
-                filepaths = self.uploader.upload_screenshots(images)
+                filepaths = self.uploader.upload_screenshots(targets)
+                # TODO Image delete code probably doesn't belong here
                 if (self.config.get('delete_local_images')):
-                    [os.remove(path.get('local_filepath')) for path in images]
+                    [os.remove(path.get('local_filepath')) for path in targets]
             except AttributeError:
                 pass
             time.sleep(self.config.get('time_between_screenshots'))
@@ -69,7 +70,7 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
 
         Many options have defaults; use these unless they are overwritten in
         config.yaml. This file includes the urls, css selectors and slugs for
-        the images to screenshot.
+        the targets to screenshot.
         """
         config = {
             'skip_upload': False,
@@ -88,7 +89,7 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
         }
 
         required = (
-            'images',
+            'targets',
             'local_image_directory',
         )
 

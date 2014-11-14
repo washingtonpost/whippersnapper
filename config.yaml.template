@@ -6,6 +6,6 @@ aws_subpath: test/unnamed-screenshot-tool
 
 local_image_directory: /tmp
 
-images:
+targets:
     - url: http://www.washingtonpost.com/
       slug: washington-post
