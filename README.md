@@ -94,12 +94,12 @@ storing the images locally](config_templates/local.yaml.template) or
 
     The following options can override the global options on a
     per-target basis:
-      - **page_load_delay**
-      - **wait_for_js_signal**
-      - **local_image_directory**
-      - **aws_subpath**
-      - **override_css_file**
-      - **failure_timeout**
+    - **page_load_delay**
+    - **wait_for_js_signal**
+    - **local_image_directory**
+    - **aws_subpath**
+    - **override_css_file**
+    - **failure_timeout**
 
 - **local_image_directory**
 
