@@ -42,10 +42,11 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
 
         while True:
             targets = self.screenshotter.take_screenshots()
-            self.uploader.upload_screenshots(targets)
-            # TODO Image delete code probably doesn't belong here
-            if (self.config.get('delete_local_images')):
-                [os.remove(path.get('local_filepath')) for path in targets]
+            if hasattr(self, 'uploader'):
+                self.uploader.upload_screenshots(targets)
+                # TODO Image delete code probably doesn't belong here
+                if (self.config.get('delete_local_images')):
+                    [os.remove(path.get('local_filepath')) for path in targets]
             time.sleep(self.config.get('time_between_screenshots'))
 
     def init_logging(self):
