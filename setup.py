@@ -10,6 +10,7 @@ setup(
     url='http://github.com/washingtonpost/whippersnapper',
     description='Whippersnapper is an automated screenshot tool to keep a visual history of content on the web.',
     long_description='Check out the project on GitHub for the latest information <http://github.com/washingtonpost/whippersnapper>',
+    license='MIT',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
@@ -17,6 +18,7 @@ setup(
         'Natural Language :: English',
         'Operating System :: Unix',
         'Programming Language :: Python',
+        'License :: OSI Approved :: MIT License',
     ],
     packages=[
         'whippersnapper',
