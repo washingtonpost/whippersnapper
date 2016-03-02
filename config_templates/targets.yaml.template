@@ -12,9 +12,9 @@ time_between_screenshots: 180
 failure_timeout: 45
 
 targets:
-    - url: http://www.washingtonpost.com/
+    - url: https://www.washingtonpost.com/
       slug: washington-post
-      selector: '#content > .wp-row > .wp-column > .container'
+      target_selector: '#right-rail > .pb-container > .pb-f-page-post-most'
       aws_subpath: screenshots/wp-hp
       page_load_delay: 2
     - url: https://news.ycombinator.com/
@@ -23,6 +23,11 @@ targets:
       page_load_delay: 4
     - url: http://www.drudgereport.com/
       slug: drudge-report
-      selector: '#drudgeTopHeadlines'
+      target_selector: '#drudgeTopHeadlines'
       aws_subpath: screenshots/dr-hp
       page_load_delay: 2
+    - url: https://www.washingtonpost.com/
+      slug: mobile-post-no-headlines
+      target_selector: '#main-content .top-table'
+      hide_selector: '.headline'
+      browser_width: 375

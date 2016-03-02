@@ -87,7 +87,7 @@ storing the images locally](config_templates/local.yaml.template) or
 
       Required. The URL of the page you are screenshotting.
 
-    - **selector** - String
+    - **target_selector** - String
 
       Optional. Defaults to `body`. The selector of the element you wish
       to screenshot.
@@ -142,6 +142,11 @@ storing the images locally](config_templates/local.yaml.template) or
 
   Optional. Default: `60`. Seconds to wait between taking screenshots
 
+- **hide_selector**
+
+  Optional. The CSS selector(s) of elements on the page which you wish to
+  hide before capturing the screnshot (works by setting `display: none;`).
+
 - **override_css_file**
 
   Optional. Path to a CSS file that overrides any existing styles on the
@@ -152,6 +157,11 @@ storing the images locally](config_templates/local.yaml.template) or
 
   Optional. Default: `2`. Seconds to wait after the page is loaded, to
   ensure that any JavaScript has finished running.
+
+- **browser_width** - Number
+
+  Optional. Default: `1440`. The width of the browser window, can be used
+  to capture a particular step in a responsive layout.
 
 - **wait_for_js_signal** - Boolean
 
