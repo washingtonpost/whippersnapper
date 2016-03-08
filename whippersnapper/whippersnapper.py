@@ -84,8 +84,10 @@ To quit, press ^C (ctrl-C).""" % (self.log_file)
             'log_file': log_file,
             'delete_local_images': False,
             'time_between_screenshots': 60,
+            'hide_selector': ' ',
             'override_css_file': None,
             'page_load_delay': 2,
+            'browser_width': 1440,
             'wait_for_js_signal': False,
             'failure_timeout': 30,
         }

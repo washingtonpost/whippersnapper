@@ -17,8 +17,8 @@ class Target(object):
             if not option in target_config:
                 raise RuntimeError('Missing required option %s' % option)
 
-        if not 'selector' in target_config:
-            target_config['selector'] = 'body'
+        if not 'target_selector' in target_config:
+            target_config['target_selector'] = 'body'
 
 
     def combine_config_options(self, global_config, target_config):
@@ -35,6 +35,8 @@ class Target(object):
             'override_css_file',
             'wait_for_js_signal',
             'failure_timeout',
+            'hide_selector',
+            'browser_width'
         ]
 
         for option in options_whitelist:

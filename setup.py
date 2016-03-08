@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='whippersnapper',
-    version='0.0.4',
+    version='0.0.5',
     author='Kevin Schaul, Katie Park',
     author_email='kevin.schaul@washpost.com, katie.park@washpost.com',
     url='http://github.com/washingtonpost/whippersnapper',
@@ -12,7 +12,7 @@ setup(
     long_description='Check out the project on GitHub for the latest information <http://github.com/washingtonpost/whippersnapper>',
     license='MIT',
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Beta',
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Natural Language :: English',

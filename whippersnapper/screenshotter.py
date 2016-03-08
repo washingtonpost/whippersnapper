@@ -25,22 +25,24 @@ class Screenshotter(object):
             try:
                 self.depict(
                     current_target.url,
-                    current_target.selector,
+                    current_target.target_selector,
                     current_target.local_filepath,
                     # Depict's delay argument is defined in milliseconds
-                    str(int(current_target.page_load_delay) * 1000)
+                    str(int(current_target.page_load_delay) * 1000),
+                    current_target.hide_selector,
+                    str(current_target.browser_width)
                 )
                 targets.append(current_target)
             except RuntimeError as e:
                 logging.error(e)
         return targets
 
-    def depict(self, url, selector, destination, page_load_delay):
+    def depict(self, url, target_selector, destination, page_load_delay, hide_selector, browser_width):
         """
         Runs the command-line utility `depict`.
         """
-        args = ['depict', url, destination, '-s', selector,
-                '--delay', page_load_delay]
+        args = ['depict', url, destination, '-s', target_selector,
+                '-d', page_load_delay, '-w', browser_width, '-H', hide_selector]
 
         override_css_file = self.config.get('override_css_file')
         if override_css_file:
